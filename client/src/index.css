@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(210, 11%, 15%);
+  --muted: hsl(210, 40%, 96%);
+  --muted-foreground: hsl(215, 13%, 65%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(210, 11%, 15%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(210, 11%, 15%);
+  --border: hsl(214, 32%, 91%);
+  --input: hsl(214, 32%, 91%);
+  --primary: hsl(232, 74%, 66%);
+  --primary-foreground: hsl(210, 40%, 98%);
+  --secondary: hsl(261, 32%, 57%);
+  --secondary-foreground: hsl(210, 40%, 98%);
+  --accent: hsl(210, 40%, 96%);
+  --accent-foreground: hsl(222, 84%, 5%);
+  --destructive: hsl(0, 84%, 60%);
+  --destructive-foreground: hsl(210, 40%, 98%);
+  --ring: hsl(215, 20%, 65%);
+  --radius: 0.5rem;
+  
+  /* Custom keyboard app colors */
+  --light-primary: hsl(232, 74%, 66%);
+  --light-secondary: hsl(261, 32%, 57%);
+  --light-bg: hsl(0, 0%, 100%);
+  --light-keys: hsl(210, 40%, 97%);
+  --light-text: hsl(210, 11%, 15%);
+}
+
+.dark {
+  --background: hsl(210, 28%, 11%);
+  --foreground: hsl(213, 31%, 91%);
+  --muted: hsl(210, 11%, 15%);
+  --muted-foreground: hsl(215, 13%, 65%);
+  --popover: hsl(210, 28%, 11%);
+  --popover-foreground: hsl(213, 31%, 91%);
+  --card: hsl(210, 28%, 11%);
+  --card-foreground: hsl(213, 31%, 91%);
+  --border: hsl(210, 11%, 15%);
+  --input: hsl(210, 11%, 15%);
+  --primary: hsl(231, 48%, 48%);
+  --primary-foreground: hsl(210, 40%, 98%);
+  --secondary: hsl(261, 42%, 35%);
+  --secondary-foreground: hsl(210, 40%, 98%);
+  --accent: hsl(210, 11%, 15%);
+  --accent-foreground: hsl(213, 31%, 91%);
+  --destructive: hsl(0, 63%, 31%);
+  --destructive-foreground: hsl(210, 40%, 98%);
+  --ring: hsl(215, 20%, 65%);
+  
+  /* Custom keyboard app colors for dark mode */
+  --dark-primary: hsl(231, 48%, 48%);
+  --dark-secondary: hsl(261, 42%, 35%);
+  --dark-bg: hsl(210, 28%, 11%);
+  --dark-keys: hsl(210, 11%, 15%);
+  --dark-text: hsl(213, 31%, 91%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply antialiased bg-background text-foreground min-h-screen;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  }
+}
+
+@layer components {
+  .key-pressed {
+    transform: scale(0.95);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+  }
+  
+  .word-correct {
+    @apply text-green-600 dark:text-green-400;
+  }
+  
+  .word-incorrect {
+    @apply bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 line-through;
+  }
+  
+  .word-current {
+    @apply bg-blue-100 dark:bg-blue-900/30 rounded px-1;
+  }
+  
+  .typing-cursor {
+    animation: blink 1s infinite;
+  }
+  
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  .caret-transparent {
+    caret-color: transparent;
+  }
+}
